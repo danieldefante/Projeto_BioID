@@ -4,8 +4,6 @@ import bo.BOFactory;
 import dao.DAOCultivar;
 import dao.DAOSafra;
 import dao.DAOEstoque;
-import dao.DAOIOEstoque;
-import fw.VerificarSessao;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import javax.ws.rs.Consumes;
@@ -20,7 +18,6 @@ import org.json.JSONObject;
 import to.TOCultivar;
 import to.TOSafra;
 import to.TOEstoque;
-import to.TOIOEstoque;
 
 /**
  * REST Web Service
@@ -50,25 +47,16 @@ public class ServicosCultivar {
         JSONObject k = new JSONObject(dataJson);
         
         try{       
-            //verifica  a sessao
-//            VerificarSessao vs = new VerificarSessao();
-//            String sessao = vs.VerificarSessao(k.getString("usuario"), k.getString("sessao"));
-//            
-//            if( sessao == null){
-//                j.put("sucesso", false);
-//                j.put("mensagem", "Sessao não encontrada!");
-//            }else{
-                //comeca a requisicao
+
                 TOCultivar p = new TOCultivar();
                 p.setIdcultivar(k.getLong("idcultivar"));
                 p = (TOCultivar) BOFactory.get(new DAOCultivar(), p, k.getString("metodo"));
                 if(p == null){
                     j.put("sucesso", false);
-//                    j.put("sessao", sessao);
+
                     j.put("mensagem", "Cultivar não encontrado");
                 }else{
-                    j.put("data", p.getJson(k.getString("metodo")));
-//                    j.put("sessao", sessao);
+
                     j.put("sucesso", true);
                 }           
                 
@@ -93,16 +81,7 @@ public class ServicosCultivar {
         JSONObject k = new JSONObject(dataJson);
         
         try{
-            
-            //verifica  a sessao
-//            VerificarSessao vs = new VerificarSessao();
-//            String sessao = vs.VerificarSessao(k.getString("usuario"), k.getString("sessao"));
-//            
-//            if( sessao == null){
-//                j.put("sucesso", false);
-//                j.put("mensagem", "Sessao não encontrada!");
-//            }else{
-                //comeca a requisicao
+
                 JSONArray ja = null;
                 
                         ja = BOFactory.listar(new DAOCultivar(), null, k.getString("metodo"));
@@ -111,14 +90,13 @@ public class ServicosCultivar {
                 if(ja.length() > 0){
                     j.put("data", ja);
                     j.put("sucesso", true);
-//                    j.put("sessao", sessao);
+
                 }else{
                     j.put("sucesso", false);
                     j.put("mensagem", "Sem "+ k.getString("metodo"));
-//                    j.put("sessao", sessao);
+
                 }
-                
-//            }
+
             
         
         }catch(Exception e){
@@ -142,17 +120,7 @@ public class ServicosCultivar {
         JSONObject k = new JSONObject(dataJson);
         
         try{
-            
-             //verifica  a sessao
-//            VerificarSessao vs = new VerificarSessao();
-//            String sessao = vs.VerificarSessao(k.getString("usuario"), k.getString("sessao"));
-//            
-//            if( sessao == null){
-//                j.put("sucesso", false);
-//                j.put("mensagem", "Sessao não encontrada!");
-//            }else{
-                //comeca a requisicao
-            
+
             
                 //cria um objeto
                 TOCultivar t = new TOCultivar();
@@ -173,10 +141,9 @@ public class ServicosCultivar {
 
                     j.put("sucesso", true);
                     j.put("mensagem", "Cultivar cadastrado com sucesso!");
-//                    j.put("sessao", sessao);
+
                 }else{
                    j.put("sucesso", false);
-//                   j.put("sessao", sessao);
                    j.put("mensagem", "Cultivar já cadastrado!");
                 }
             
@@ -278,16 +245,6 @@ public class ServicosCultivar {
         JSONObject k = new JSONObject(dataJson);
         
         try{
-            
-             //verifica  a sessao
-//            VerificarSessao vs = new VerificarSessao();
-//            String sessao = vs.VerificarSessao(k.getString("usuario"), k.getString("sessao"));
-//            
-//            if( sessao == null){
-//                j.put("sucesso", false);
-//                j.put("mensagem", "Sessao não encontrada!");
-//            }else{
-                //comeca a requisicao
                 
                 TOEstoque te = new TOEstoque();
                 

@@ -11,46 +11,38 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
+import org.json.JSONObject;
 import to.TOBase;
+import to.TOCidade;
 import to.TOOutrosIDNome;
 
 /**
  *
  * @author daniel
  */
-public class DAOOutrosIDNome extends DAOBase{
+public class DAOCidade extends DAOBase{
 
 
 
     @Override
-    public JSONArray listar(Connection c, TOBase t, String metodo) throws Exception {
+    public JSONArray listar(Connection c, String dataJson) throws Exception {
         JSONArray  ja = new JSONArray();
         String sql = null;
         ResultSet rs = null;
+        JSONObject k = new JSONObject(dataJson);
         try{
             //variavel com lista dos parametros
             List<Object> u = new ArrayList<Object>();
-            
-            switch(metodo){
-                case "PAIS":
-                    sql = "SELECT idpais, nomepais FROM pais ORDER BY nomepais ASC";
-                    break;
-                case "ESTADOS":
-                    sql = "SELECT idestado, nomeestado FROM estado WHERE pais_idpais IN(?) ORDER BY nomeestado ASC";
-                    u.add(((TOOutrosIDNome) t).getId());
-                    break;
-                case "CIDADES":
+ 
                      sql = "SELECT idcidade, nomecidade FROM cidade WHERE estado_idestado IN(?) ORDER BY nomecidade ASC";
-                     u.add(((TOOutrosIDNome) t).getId());
-                    break;
-                
-            }
+                     u.add(k.getString("idestado"));
+                    
             
             rs = Data.executeQuery(c, sql, u);
             
             while (rs.next()){
-                TOOutrosIDNome ts = new TOOutrosIDNome(rs, metodo);
-                ja.put(ts.getJson(metodo));
+                TOCidade ts = new TOCidade(rs);
+                ja.put(ts.getJson());
             }
             
                         

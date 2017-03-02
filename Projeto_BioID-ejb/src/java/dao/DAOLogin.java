@@ -51,8 +51,6 @@ public class DAOLogin extends DAOBase{
         ResultSet rs = null;
         
         try{
-            //variavel sendo convertida para tologin
-//            TOLogin to = (TOLogin)t;
             //variavel com lista dos parametros
             List<Object> u = new ArrayList<Object>();
             
@@ -77,8 +75,6 @@ public class DAOLogin extends DAOBase{
                     sql = "SELECT * FROM login";
                     break;
             }
-            
-            
             
             rs = Data.executeQuery(c, sql, u);
             

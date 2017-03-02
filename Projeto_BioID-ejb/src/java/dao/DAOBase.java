@@ -38,9 +38,13 @@ public class DAOBase {
         return null;
     }
         
-//    public JSONArray listar(Connection c, String metodo) throws Exception{
-//        return null;
-//    }
+    public JSONArray listar(Connection c) throws Exception{;
+        return null;
+    }
+    
+    public JSONArray listar(Connection c, String dataJson) throws Exception{;
+        return null;
+    }
 
     public JSONArray listar(Connection c, TOBase t, String metodo) throws Exception{
         return null;

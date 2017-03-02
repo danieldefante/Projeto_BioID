@@ -46,15 +46,7 @@ public class ServicoPropriedade {
         JSONObject k = new JSONObject(dataJson);
         
         try{
-             //verifica  a sessao
-//            VerificarSessao vs = new VerificarSessao();
-//            String sessao = vs.VerificarSessao(k.getString("usuario"), k.getString("sessao"));
-//            
-//            if( sessao == null){
-//                j.put("sucesso", false);
-//                j.put("mensagem", "Sessao não encontrada!");
-//            }else{
-                //comeca a requisicao
+             
             
 //                //objeto TOEndereco
 //                TOEndereco te = new TOEndereco();
@@ -93,14 +85,12 @@ public class ServicoPropriedade {
 //                    BOFactory.inserir(new DAORelacaopa(), tr);
 //
 //                    j.put("sucesso", true);
-//                    j.put("sessao", novaSessao);
 //                    j.put("messangem", "Propriedade cadastrada");
 //                }else{
 //                    j.put("sucesso", false);
-//                    j.put("sessao", novaSessao);
 //                    j.put("mensagem", "Propriedade ja existe no sistema!");
 //                }
-//            }
+
         }catch(Exception e){
             j.put("sucesso", false);
             j.put("messangem", e.getMessage());
@@ -119,17 +109,7 @@ public class ServicoPropriedade {
         JSONObject k = new JSONObject(dataJson);
         
         try{
-             //verifica  a sessao
-//            VerificarSessao vs = new VerificarSessao();
-//            String sessao = vs.VerificarSessao(k.getString("usuario"), k.getString("sessao"));
-//            
-//            if( sessao == null){
-//                j.put("sucesso", false);
-//                j.put("mensagem", "Sessao não encontrada!");
-//            }else{
-                //comeca a requisicao
-                
-            
+             
                 TOPessoa t = new TOPessoa();
                 t.setIdpessoa(k.getLong("idpessoa"));
                 t.setIdunidade(k.getLong("idunidade"));
@@ -140,13 +120,11 @@ public class ServicoPropriedade {
                 if(ja.length() > 0){
                     j.put("data", ja);
                     j.put("sucesso", true);
-//                    j.put("sessao", sessao);
                 }else{
                     j.put("sucesso", false);
                     j.put("mensagem", "Usuário não contém propriedade cadastrada!");
-//                    j.put("sessao", sessao);
+
                 }
-//            }
         }catch(Exception e){
             j.put("sucesso", false);
             j.put("mensagem", e.getMessage());

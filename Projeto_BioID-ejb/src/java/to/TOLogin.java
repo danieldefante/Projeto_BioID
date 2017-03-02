@@ -28,8 +28,6 @@ public class TOLogin extends TOBase{
     //retorno
     private String nome;
     
-    private String sessao;
-    
     private String grupo;
     
 
@@ -75,14 +73,6 @@ public class TOLogin extends TOBase{
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getSessao() {
-        return sessao;
-    }
-
-    public void setSessao(String sessao) {
-        this.sessao = sessao;
     }
 
     public String getGrupo() {
@@ -132,7 +122,6 @@ public class TOLogin extends TOBase{
                 j.put("usuario", usuario);
                 j.put("nome", nome);
                 j.put("idunidade", unidade_idunidade);
-//                j.put("sessao", sessao);
                 j.put("grupo", grupo);
                 break;
             case "GET_POR_USUARIO":

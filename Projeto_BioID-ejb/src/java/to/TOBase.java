@@ -1,12 +1,9 @@
-/*
-Classe base que da suporte a qualquer classe herdada dela
 
- */
 package to;
 import org.json.JSONObject;
 /**
  *
- * @author aimee
+ * @author Daniel
  */
 public class TOBase {
     
@@ -18,9 +15,9 @@ public class TOBase {
         return null;
     }
     
-//    public JSONObject getJson(ResultSet rs, String metodo) throws Exception{
-//        return null;
-//    }
+    public JSONObject getJson() throws Exception{
+        return null;
+    }
     
 
 }
